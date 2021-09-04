@@ -6,7 +6,6 @@
     "require": {
         "php": ">=7.1.0",
         "ext-pdo": "*",
-        "jaeger/querylist": "^4.2",
         "ext-json": "*"
     },
     "authors": [
