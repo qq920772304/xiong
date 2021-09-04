@@ -50,7 +50,7 @@ class UnifiedEntrance
         }
         $k = $k+1;
         if(array_key_exists($k,$uri) && $uri[$k] != ""){
-            $this->method = $uri[$k];
+            $this->method = explode("?",$uri[$k])[0];
         }
         $controller = $this->controller;
         $method = $this->method;
