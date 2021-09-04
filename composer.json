@@ -1,0 +1,32 @@
+{
+    "name": "xiong/demo",
+    "description": "这是一个练习项目",
+    "license":"Apache-2.0",
+    "type": "project",
+    "require": {
+        "php": ">=7.1.0",
+        "ext-pdo": "*",
+        "jaeger/querylist": "^4.2",
+        "ext-json": "*"
+    },
+    "authors": [
+        {
+            "name": "xiong",
+            "email": "920772304@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "extend\\": "extend/",
+            "app\\": "app/",
+            "command\\": "command/"
+        },
+        "files": [
+            "common/path.php",
+            "common/config.php"
+        ],
+        "classmap": [
+            "Smarty/"
+        ]
+    }
+}
