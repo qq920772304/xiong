@@ -68,6 +68,24 @@ function templatesConfig($key = ""){
         return "";
     }
 }
+/**
+ * redis配置参数
+ * @var string
+ */
+function redisConfig($key = ""){
+    $data = [
+        'host'=>"127.0.0.1",
+        'port'=>6379,
+        'auth'=>""
+    ];
+    if(is_null($key)){
+        return $data;
+    }else if(array_key_exists($key,$data)){
+        return $data[$key];
+    }else{
+        return "";
+    }
+}
 
 
 /**
