@@ -58,6 +58,16 @@ class UnifiedEntrance
             $controller ='\app\controller\\'.$controller;
             $controller = new $controller;
             if(method_exists($controller,$method)){
+                $preOperation = $controller->preOperation;
+                if(count($preOperation)){
+                    foreach ($preOperation as $key=>$value){
+                        if(in_array($method,$value)){
+                            if(method_exists($controller,$key)){
+                                $controller->$key();
+                            }
+                        }
+                    }
+                }
                 $controller->$method();
             }else{
                 throw new Exception("{$method} 方法不存在，检查大小写是否正确",404);
