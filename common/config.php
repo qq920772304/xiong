@@ -19,13 +19,7 @@ function dbConfig($key = ""){
         // 数据库端口
         'port'=>3306
     ];
-    if(is_null($key)){
-        return $data;
-    }else if(array_key_exists($key,$data)){
-        return $data[$key];
-    }else{
-        return "";
-    }
+    return getValue($data,$key);
 }
 
 /**
@@ -38,13 +32,7 @@ function appConfig($key = ""){
         'controller'=>"Index",
         'method'=>"index"
     ];
-    if(is_null($key)){
-        return $data;
-    }else if(array_key_exists($key,$data)){
-        return $data[$key];
-    }else{
-        return "";
-    }
+    return getValue($data,$key);
 }
 
 /**
@@ -60,13 +48,7 @@ function templatesConfig($key = ""){
         "cache_lifetime" => 60*60*12,
         "suffix" => "tpl"
     ];
-    if(is_null($key)){
-        return $data;
-    }else if(array_key_exists($key,$data)){
-        return $data[$key];
-    }else{
-        return "";
-    }
+    return getValue($data,$key);
 }
 /**
  * redis配置参数
@@ -78,6 +60,16 @@ function redisConfig($key = ""){
         'port'=>6379,
         'auth'=>""
     ];
+    return getValue($data,$key);
+}
+
+/**
+ * 获取配置value值
+ * @param $data
+ * @param $key
+ * @return mixed|string
+ */
+function getValue($data,$key){
     if(is_null($key)){
         return $data;
     }else if(array_key_exists($key,$data)){
