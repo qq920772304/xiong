@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/view/layui/css/layui.css">
     <script src="/view/layui/layui.js"></script>
 </head>
-<body style="background-color: #e2e2e2">
+<body>
 <div class="layui-fluid">
     
 </div>
