@@ -4,5 +4,6 @@ namespace extend;
 
 class App
 {
+    // 前置操作
     public $preOperation = array();
 }

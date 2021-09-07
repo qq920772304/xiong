@@ -68,7 +68,13 @@ class UnifiedEntrance
                         }
                     }
                 }
-                $controller->$method();
+                $data = $controller->$method();
+                if(is_array($data)){
+                    $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+                }
+
+                echo $data;
+                exit();
             }else{
                 throw new Exception("{$method} 方法不存在，检查大小写是否正确",404);
             }

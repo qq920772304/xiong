@@ -92,11 +92,11 @@ function redisConfig($key = ""){
  * json返回值处理
  * @param $data
  * @param int $state
+ * @return false|string
  */
 function json($data,$state = 200){
     http_response_code($state);
-    echo json_encode($data,JSON_UNESCAPED_UNICODE);
-    exit();
+    return json_encode($data,JSON_UNESCAPED_UNICODE);
 }
 
 /**
