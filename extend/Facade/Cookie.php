@@ -8,15 +8,13 @@ class Cookie
      * 设置Cookie
      * @param $name
      * @param $data
-     * @param int $expire
-     * @param string $path
-     * @param string $domain
+     * @param $options array expire过期时间，path存储路径，domain域名
      * @return bool
      */
-    public static function set($name,$data,$expire = 0,$path = "",$domain = ""): bool
+    public static function set($name,$data,$options = array()): bool
     {
         $cookie = new \extend\Cookie();
-        return $cookie->set($name,$data,$expire,$path,$domain);
+        return $cookie->set($name,$data,$options);
     }
 
     /**
@@ -26,7 +24,13 @@ class Cookie
      */
     public static function get($name){
         $cookie = new \extend\Cookie();
-        return $cookie->get($name);
+        $str = $cookie->get($name);
+        json_decode($str);
+        if(json_last_error() == JSON_ERROR_NONE){
+            return  json_decode($str,true);
+        }else{
+            return $str;
+        }
     }
 
     /**
