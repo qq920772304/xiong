@@ -58,6 +58,7 @@ class UnifiedEntrance
             $controller ='\app\controller\\'.$controller;
             $controller = new $controller;
             if(method_exists($controller,$method)){
+                // 前置操作
                 $preOperation = $controller->preOperation;
                 if(count($preOperation)){
                     foreach ($preOperation as $key=>$value){
@@ -68,11 +69,22 @@ class UnifiedEntrance
                         }
                     }
                 }
+                // 调用方法
                 $data = $controller->$method();
                 if(is_array($data)){
                     $data = json_encode($data,JSON_UNESCAPED_UNICODE);
                 }
-
+                // 后置操作
+                $postOperation = $controller->postOperation;
+                if(count($postOperation)){
+                    foreach ($postOperation as $key=>$value){
+                        if(in_array($method,$value)){
+                            if(method_exists($controller,$key)){
+                                $controller->$key();
+                            }
+                        }
+                    }
+                }
                 echo $data;
                 exit();
             }else{
