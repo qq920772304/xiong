@@ -10,6 +10,6 @@ use extend\Templates;
 class Index extends Common
 {
     public function index(){
-        Templates::display("index/index");
+        return json(['name'=>"张三"]);
     }
 }
