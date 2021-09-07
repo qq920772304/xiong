@@ -9,7 +9,9 @@ class Session
      * 开启Session
      */
     public function __construct(){
-        session_start();
+        if(!session_id()){
+            session_start();
+        }
     }
     /**
      * 设置Session

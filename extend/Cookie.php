@@ -25,22 +25,24 @@ class Cookie
      * 设置Cookie
      * @param $name
      * @param $data
-     * @param $expire
-     * @param $path
-     * @param $domain
+     * @param $options
      * @return bool
      */
-    public function set($name,$data,$expire,$path,$domain){
-        if($expire){
-            $this->expire;
+    public function set($name,$data,$options){
+        if(array_key_exists("expire",$options)){
+            $this->expire = $options['expire'];
         }
-        if($path){
-            $this->path = $path;
+        if(array_key_exists("path",$options)){
+            $this->path = $options['path'];
         }
-        if($domain){
-            $this->domain = $domain;
+        if(array_key_exists("domain",$options)){
+            $this->domain = $options['domain'];
         }
-        return setcookie($name,$data,$expire,$path,$domain);
+
+        if(is_array($data)){
+            $data = json_encode($data);
+        }
+        return setcookie($name,$data,$this->expire,$this->path,$this->domain);
     }
 
     /**
